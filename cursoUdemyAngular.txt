@@ -1,0 +1,159 @@
+GIT
+para subir un proyecto a un repositorio.
+Creamos el repositorio desde la web github
+desde la carpeta raiz del proyecto, boton derecho Git Bas Here
+>git init
+>git add .
+>git commit -m 'primer commit'
+ahora hay que ejecutar los dos lienas de comando que aparece en la web de nuestro repositorio para vincularlo al repositorio
+>git remote add origin https://github.com/fmerinoat/springThymelife.git
+>git push -u origin master
+> Refrescamos la pagina web github y ya tenemos el codigo subido.
+Tenemos que crear el archivo .gitignore para ello entramos en la web gitignore e introducimos el sistema operativo windows, .. y generamos el codigo que copiaremos en el archivo .gitignore que vamos a crear
+
+instalar node desde la pagina node.org
+instalar npm
+instalar typescript, abrir consola como administrador> npm install -g typescript
+instalar angular cliente >npm install -g @angular/cli
+para instlar ionic yo no lo he instalado. >npm install -g ionic
+muy importante instalar en el visual code snippets para hacer el autocompletar
+
+ANGULAR
+>ng new nombreProyecto (crear nuevo proyecto angular)
+>ng serve (para iniciar el proyecto opcion -o para que abra el navegador automaticamente en el puerto 4200)
+>ng serve -p 4201 (para cambiar el puerto de salida por si el 4200 esta usado)
+>npm install (para generar el proyecto y la carpeta de node_modules)
+
+BOOTSTRAP
+Para añadir bootstrap en una aplicacion, hay que añadir en el index.html dentro del <head> la siguiente linea que se puede sacar de la pagina oficial de bootstrap 
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+y dentro del body al final
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+esta opcion requiere que el pc este conectado a internet para poder acceder.
+
+otra opcion es descargarse desde la pagina getbootstrap y poner la carpeta descargada en assets/libs/bootstrap en la carpeta assets de nuestro proyecto
+y en el index.html poner en el head  <link rel="stylesheet" href="./assets/libs/bootstrap/css/bootstrap.min.css">
+
+la otra opción es instalar bootstrap, jquery y popper
+>npm install bootstrap --save
+>npm install jquery --save
+>npm install popper.js --save
+esto se descargara en la carpeta node_modules
+en el archivo angular.js 
+"styles": [
+              "src/styles.css",
+          ],
+            "scripts": [],
+Tenemos que añadirle en el estilo el bootstrap con la ruta del node_modules y en el scrip bootstrap, jquery y popper.js
+"styles": [
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+            ],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.slim.min.js",
+              "node_modules/popper.js/dist/umd/popper.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ],
+
+
+https://developer.spotify.com/console/get-search-item/?q=ed%20sheeran&type=artist&market=&limit=15&offset=
+
+
+En otro video dice que tether.io también hay que descargarselo porque lo necesita el bootstrap
+
+IONIC
+>npm install -g ionic
+//Para crear una nueva aplicacion ionic
+>ionic start myApp tabs
+//iniciear el servicio
+>ionic serve
+//para autocompletar
+instalar en visual code ionic 4 snippets
+instalar auto close tag
+
+auth0.com
+usuario fmerinoat@hotmail.com 
+password Fmerinoat1981
+id para usar los servicios: fmerinoat
+
+para instalarlo: npm install --save auth0-js
+Pegar en el index.html dentro del <head> la siguiente linea:
+ <script src="https://cdn.auth0.com/js/auth0/9.10/auth0.min.js"></script>
+
+--Para importar http
+en el servicio 
+import { HttpClient} from '@angular/common/http';
+en el app.module
+import { HttpClientModule} from '@angular/common/http';
+
+import { map } from 'rxjs/operators';
+
+-GENERAR LA CARPETA DIST para subir a desarrollo.
+>ng build
+Esto crea una carpeta dist dentro del proyecto
+
+-GENERAR PARA PRODUCCION
+vamos a la carpeta src/environments/environmets.ts y cambiamos production: a true
+>ng build --prod
+Esto genera la carpeta dist con todos los archivos para subir a produccion
+
+--Para desplegar en produccion en un hosting
+pegamos todas los archivos de la carpeta creada dist/nombreproyecto/(todos los archivos creados) y los pegamos en en servidor y tenemos que hacer un cambio importante
+en el archivo index.html <base href="/"> tenemos que quitarle el / <base href=""> y generar de nuevo y cambiar los archivos en el servidor.
+el archivo index.html es el que busca el hosting para desplegarlo.
+importante poner en el app.module en el imports el usehash: true
+imports:[
+RouterModule.forRoot( routes, { useHash: true } )
+]
+
+
+para generar una aplicacion segun el paquete package.json
+>npm install
+para correr la aplicacion si no funciona ng serve
+>npm start (debe estar en el package.json en los scripts)
+
+-IMPORTAR ANGULAR MATERIAL
+>ng add @angular/material
+
+- importar en app.module.ts
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
+importar en style.css
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+>npm install --save hammerjs
+despues de instalar hammerjs importar en archivo src/main.ts
+import 'hammerjs';
+
+pegar en el index.html
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+--Para utilizar botones o lo que sea de material, voy a los ejemplos de la pagina y lo copio y pego en mi componente
+pero muy importante hay que ir arriba en API y copiar en mi app.module.ts el import que toque y importarlo
+ejemplo button: import { MatButtonModule } from '@angular/material/button'; y en imports[MatButtonModule]
+
+-- Cuando tenemos varios modulos al generar un componente lo importa en el modulo mas proximo, pero si los dos modulos estan en la misma raiz
+se puede indicar a que modulo queremos importar el componente de la siguiente manera:
+>ng g c components/micomponente --module=app.module
+
+---Para añadir [(ngModel)]="variable", 
+- En el app.module importar -> import { FormsModule } from '@angular/forms';
+
+
+---Para añadir Form en el html, 
+- En el html-> <form #f="NgForm"></>
+- En el archivo ts importar -> import {NgForm} from '@angular/forms';
+- En el app.module importar -> import { FormsModule } from '@angular/forms';
+
+
+DUDAS:
+event, cuando se pasa un evento en una funcion bootcamps
+directivas propias bootcamps
+mirar childview bootcamps
+configurar para llamar al apiservice bootcamp
+
+
+
+ autorizo a que mantengáis mis datos en vuestra base de datos.
